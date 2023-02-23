@@ -1,0 +1,32 @@
+---
+name: useTransition
+route: /useTransition
+---
+import Editor from '../components/Editor'
+
+# useTransition 💫
+ 
+Notes: 
+ -`useTransition` lets you use local state within a function component.
+ - Call signature: `const [isPending, startTransition] = useTransition()`
+ - View the [docs.](https://reactjs.org/docs/hooks-reference.html#useTransition)
+--- 
+
+## Marking State as Transition
+Marking a state as transition is as simple as passing a synchronous function with the state you want to transition into the `startTransition` function returned by the `useTransition` hook.
+
+```
+const review=()=>{
+
+  const [timeUpdate, setTimeUpdate] = useState(2)
+  const [isPending, startTransition] = useTransition()
+
+  startTransition(()=>{
+      // handle state change in here
+      setTimeUpdate()
+    })
+  }
+  ```
+
+  ## Using in Class Components 
+  The `useTransition` hook can only be used in a functional component. However, `react` provides us with a function that we can use in class components to transition a state change.
